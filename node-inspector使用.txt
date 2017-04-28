@@ -1,0 +1,5 @@
+0,全局安装node-inspector
+1,启动服务 node --debug app.js
+2,执行 node-inspector &
+3,打开浏览器,输入提示的网址和端口
+4,打好断点,然后访问网址

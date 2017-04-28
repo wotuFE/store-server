@@ -1,0 +1,2 @@
+moment使用方法:
+http://momentjs.cn/docs/
