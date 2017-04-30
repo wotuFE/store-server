@@ -1,7 +1,9 @@
 const router = require('koa-simple-router');
 const fs = require("fs");
 const path = require('path')
-
+const initProject = require('./config/config.js');
+const closeProject = initProject();
+console.log('不开启的项目:', closeProject);
 function initController(app) {
     // 存放列表接口的数据
     const interfaceList = [];
@@ -10,8 +12,8 @@ function initController(app) {
     directories.forEach(function(dir) {
         // 读取文件信息
         fs.stat('./project/' + dir, function(err, stats) {
-            // 如果是文件是目录
-            if (stats.isDirectory()) {
+            // 如果是文件是目录,且dir不在closeProject里面
+            if (stats.isDirectory() && closeProject.indexOf(dir) === -1) {
                 const files = fs.readdirSync("./project/" + dir);
                 files.forEach((file) => {
                     // 判断文件是不是js文件,只有js文件才生成接口
